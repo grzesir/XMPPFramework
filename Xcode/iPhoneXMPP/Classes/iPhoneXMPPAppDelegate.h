@@ -2,11 +2,12 @@
 #import <CoreData/CoreData.h>
 
 #import "XMPPFramework.h"
+#import "GlobalInformation.h"
 
 @class SettingsViewController;
 
 
-@interface iPhoneXMPPAppDelegate : NSObject <UIApplicationDelegate, XMPPRosterDelegate>
+@interface iPhoneXMPPAppDelegate : NSObject <UIApplicationDelegate, XMPPRosterDelegate, XMPPvCardAvatarDelegate>
 {
 	XMPPStream *xmppStream;
 	XMPPReconnect *xmppReconnect;
@@ -50,8 +51,10 @@
 
 - (NSManagedObjectContext *)managedObjectContext_roster;
 - (NSManagedObjectContext *)managedObjectContext_capabilities;
+- (void) sendNewvCard;
 
 - (BOOL)connect;
 - (void)disconnect;
+- (IBAction)sendvCard:(id)sender;
 
 @end

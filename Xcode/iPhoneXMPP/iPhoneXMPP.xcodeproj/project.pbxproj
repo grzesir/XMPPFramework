@@ -44,6 +44,7 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		28F335F11007B36200424DE2 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* RootViewController.xib */; };
+		9DBCC8D814A2786900321617 /* GlobalInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DBCC8D714A2786900321617 /* GlobalInformation.m */; };
 		DC1CF89B1361F28000E71363 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8901361F28000E71363 /* NSString+DDXML.m */; };
 		DC1CF89D1361F28000E71363 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8941361F28000E71363 /* DDXMLDocument.m */; };
 		DC1CF89E1361F28000E71363 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1CF8961361F28000E71363 /* DDXMLElement.m */; };
@@ -153,6 +154,8 @@
 		28F335F01007B36200424DE2 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* iPhoneXMPP-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iPhoneXMPP-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9DBCC8D614A2786900321617 /* GlobalInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalInformation.h; sourceTree = "<group>"; };
+		9DBCC8D714A2786900321617 /* GlobalInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalInformation.m; sourceTree = "<group>"; };
 		DC1CF88F1361F28000E71363 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
 		DC1CF8901361F28000E71363 /* NSString+DDXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DDXML.m"; sourceTree = "<group>"; };
 		DC1CF8911361F28000E71363 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
@@ -368,6 +371,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9DBCC8D614A2786900321617 /* GlobalInformation.h */,
+				9DBCC8D714A2786900321617 /* GlobalInformation.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				0704FFC5134794020092A737 /* SettingsViewController.h */,
@@ -773,6 +778,7 @@
 				DC373191139F07CC00A8407D /* NSXMLElement+XMPP.m in Sources */,
 				07588E52143807A800134162 /* XMPPDigestAuthentication.m in Sources */,
 				07588E53143807A800134162 /* XMPPXFacebookPlatformAuthentication.m in Sources */,
+				9DBCC8D814A2786900321617 /* GlobalInformation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

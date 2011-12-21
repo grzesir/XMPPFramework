@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GlobalInformation.h"
 
 
 extern NSString *const kXMPPmyJID;
@@ -17,6 +18,7 @@ extern NSString *const kXMPPmyPassword;
 {
   UITextField *jidField;
   UITextField *passwordField;
+  IBOutlet UIImageView *userImage;
 }
 
 @property (nonatomic,retain) IBOutlet UITextField *jidField;

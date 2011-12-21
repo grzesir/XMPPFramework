@@ -27,6 +27,7 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 {
   [jidField release];
   [passwordField release];
+    [userImage release];
   [super dealloc];
 }
 
@@ -39,6 +40,8 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
   
   jidField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
   passwordField.text = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyPassword];
+  if([[GlobalInformation sharedInformation] userImage])
+    [userImage setImage:[[GlobalInformation sharedInformation] userImage]];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,4 +82,9 @@ NSString *const kXMPPmyPassword = @"kXMPPmyPassword";
 @synthesize jidField;
 @synthesize passwordField;
 
+- (void)viewDidUnload {
+    [userImage release];
+    userImage = nil;
+    [super viewDidUnload];
+}
 @end

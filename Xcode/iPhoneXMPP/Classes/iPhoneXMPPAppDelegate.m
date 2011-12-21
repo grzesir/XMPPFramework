@@ -71,7 +71,7 @@
 	if (![self connect]) {
 		[navigationController presentModalViewController:settingsViewController animated:YES];
 	}
-		
+    
 	return YES;
 }
 
@@ -226,7 +226,7 @@
 	
 	xmppvCardStorage = [[XMPPvCardCoreDataStorage sharedInstance] retain];
 	xmppvCardTempModule = [[XMPPvCardTempModule alloc] initWithvCardStorage:xmppvCardStorage];
-	
+    
 	xmppvCardAvatarModule = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:xmppvCardTempModule];
 	
 	// Setup capabilities
@@ -266,6 +266,7 @@
 
 	[xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
 	[xmppRoster addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    [xmppvCardAvatarModule addDelegate:self delegateQueue:dispatch_get_main_queue()];
 
 	// Optional:
 	// 
@@ -278,13 +279,13 @@
 	// 
 	// If you don't specify a hostPort, then the default (5222) will be used.
 	
-//	[xmppStream setHostName:@"talk.google.com"];
-//	[xmppStream setHostPort:5222];	
+	[xmppStream setHostName:SERVER_IP];
+	//[xmppStream setHostPort:5222];
 	
 
 	// You may need to alter these settings depending on the server you're connecting to
-	allowSelfSignedCertificates = NO;
-	allowSSLHostNameMismatch = NO;
+	allowSelfSignedCertificates = YES;
+	allowSSLHostNameMismatch = YES;
 }
 
 - (void)teardownStream
@@ -356,7 +357,7 @@
 		return YES;
 	}
 
-	NSString *myJID = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyJID];
+	NSString *myJID = [NSString stringWithFormat:@"%@@%@", [[NSUserDefaults standardUserDefaults] stringForKey: kXMPPmyJID], SERVER_DOMAIN];
 	NSString *myPassword = [[NSUserDefaults standardUserDefaults] stringForKey:kXMPPmyPassword];
 
 	//
@@ -399,6 +400,13 @@
   [self goOffline];
   
   [xmppStream disconnect];
+}
+
+- (IBAction)sendvCard:(id)sender {
+    XMPPvCardTemp *myvCard = [xmppvCardTempModule myvCardTemp];
+    [myvCard setGivenName:@"Rob"];
+    [myvCard setPhoto:UIImagePNGRepresentation([UIImage imageNamed:@"defaultPerson.png"])];
+    [xmppvCardTempModule updateMyvCardTemp:myvCard];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -641,6 +649,15 @@
 		[localNotification release];
 	}
 	
+}
+
+- (void) xmppvCardAvatarModule:(XMPPvCardAvatarModule *)vCardTempModule didReceivePhoto:(UIImage *)photo forJID:(XMPPJID *)jid
+{
+    GlobalInformation *globalInfo = [GlobalInformation sharedInformation];
+    [globalInfo setUserImage:photo];
+    
+    XMPPvCardTemp *avCard = [xmppvCardStorage vCardTempForJID:[XMPPJID jidWithString:@""] xmppStream:xmppStream];
+    [avCard givenName];
 }
 
 @end
